@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap");
+
+.home-container {
+  display: flex;
+  gap: 6rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+}
+
+/* Left side of the home screen */
+.phone-demo {
+  height: 34rem;
+}
+
+.phone-2 {
+  margin-left: -12rem;
+  margin-top: -5rem;
+  position: relative;
+  top: 2rem;
+}
+/* Right side of the home screen */
+.right-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.right-container h1 {
+  font-family: "Grand Hotel", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.login-form {
+  position: relative;
+  width: 100%;
+}
+
+.login-form label {
+  position: absolute;
+  margin: 0;
+  top: 22%;
+  left: 0.45rem;
+  z-index: -1;
+  transition: all ease-in 100ms;
+}
+
+.login-form label span {
+  font-size: 13px;
+  color: lightgray;
+}
+
+.login-form input {
+  padding: 0.5rem;
+  height: 1.4rem;
+  width: 20rem;
+  background-color: transparent;
+  border: 0.5px solid rgb(162, 162, 162);
+  border-radius: 3px;
+}
+
+.login-form input:valid {
+  padding: 0.85rem 0.5rem 0.2rem 0.5rem;
+  font-size: 13px;
+}
+
+.login-form input:valid + label {
+  top: 1%;
+  left: -1.35rem;
+  transform: scale(0.7);
+}
+
+.login-form input:valid + label > span {
+}
+
+.signup-container {
+  position: relative;
+}

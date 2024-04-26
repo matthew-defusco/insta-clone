@@ -1,17 +1,9 @@
-import { useState } from "react";
-import "./App.css";
-
+import Home from "./components/Home";
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <h1>Get started coding now!</h1>
-      <p>
-        There are no styles applied except for the CSS Reset. Feel free to
-        import a package or library.
-      </p>
-    </>
+    <div className="container">
+      <Home />
+    </div>
   );
 }
 
