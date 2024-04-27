@@ -1,0 +1,43 @@
+.input {
+  position: relative;
+  width: 100%;
+}
+
+.input label {
+  position: absolute;
+  margin: 0;
+  top: 22%;
+  left: 0.45rem;
+  z-index: -1;
+  transition: top ease-in 100ms;
+}
+
+.input label span {
+  font-size: 13px;
+  color: lightgray;
+}
+
+.input input {
+  padding: 0.5rem;
+  height: 1.4rem;
+  width: 20rem;
+  background-color: transparent;
+  border: 0.5px solid rgb(162, 162, 162);
+  border-radius: 3px;
+}
+
+.input input:valid {
+  padding: 0.85rem 0.5rem 0.2rem 0.5rem;
+  font-size: 13px;
+}
+
+.input input:valid + label {
+  top: 2%;
+  /* left: -1.35rem; */
+  /* transform: scale(0.7); */
+}
+
+.input input:valid + label span {
+  font-size: 9px;
+  transition: font ease-in 100ms;
+}

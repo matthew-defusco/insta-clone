@@ -1,5 +1,5 @@
 /* Global styles */
 .container {
-  width: 60%;
+  min-width: 70%;
   margin: 0 auto;
 }
