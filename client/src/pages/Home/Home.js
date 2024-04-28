@@ -13,11 +13,6 @@ const Home = () => {
   return (
     <div className={styles["home-container"]}>
       <section className={styles["left-section"]}>
-        {/* <img
-          className={styles["phone-demo"]}
-          src="/profile-portrait.png"
-          alt="phone with picture"
-        /> */}
         <img
           className={`${styles["phone-demo"]} ${styles["phone-2"]}`}
           src="/profile-portrait.png"
@@ -31,6 +26,7 @@ const Home = () => {
             name="username"
             placeholder="Email, username, or phone number"
             onChange={onUsernameChangeHandler}
+            className="mb-2"
           />
           <TextInput
             name="password"
