@@ -1,0 +1,17 @@
+{
+  "name": "insta-clone",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "devserver": "npm run dev --prefix server",
+    "devclient": "npm run dev --prefix client",
+    "dev": "concurrently \"npm run devserver\" \"npm run devclient\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
