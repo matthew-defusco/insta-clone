@@ -1,3 +1,4 @@
+import Button from "../../components/Button";
 import TextInput from "../../components/TextInput";
 import styles from "./Home.module.css";
 
@@ -22,19 +23,23 @@ const Home = () => {
       <section className={styles["right-section"]}>
         <div className={styles["login"]}>
           <h1>Instagram</h1>
-          <TextInput
-            name="username"
-            placeholder="Email, username, or phone number"
-            onChange={onUsernameChangeHandler}
-            className="mb-2"
-          />
-          <TextInput
-            name="password"
-            placeholder="Password"
-            onChange={onPasswordChangeHandler}
-          />
+          <form>
+            <TextInput
+              name="username"
+              placeholder="Email, username, or phone number"
+              onChange={onUsernameChangeHandler}
+            />
+            <TextInput
+              name="password"
+              placeholder="Password"
+              onChange={onPasswordChangeHandler}
+            />
+            <Button color={"#67B5FA"} label="Log in" />
+          </form>
         </div>
-        <div className={styles["signup-container"]}>Signup stuff goes here</div>
+        <div className={styles["signup-container"]}>
+          Don't have an account? <a href="">Sign up</a>
+        </div>
       </section>
     </div>
   );

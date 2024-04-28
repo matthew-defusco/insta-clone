@@ -19,9 +19,9 @@
 
 .input input {
   padding: 0.5rem;
-  height: 1.4rem;
-  width: 20rem;
-  background-color: transparent;
+  height: 1.2rem;
+  width: 13rem;
+  background-color: rgba(220, 220, 220, 0.3);
   border: 0.5px solid rgb(162, 162, 162);
   border-radius: 3px;
 }

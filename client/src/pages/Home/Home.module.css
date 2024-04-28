@@ -5,7 +5,7 @@
   gap: 4.5rem;
   justify-content: center;
   align-items: center;
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 
 /************* Left side of the home screen *************/
@@ -34,7 +34,17 @@
 }
 
 .login {
-  padding: 2rem;
+  padding: 3rem 3.2rem;
+  border: 1px solid rgb(219, 219, 219);
+  border-radius: 1px;
+}
+
+.login form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 
 .right-section h1 {
@@ -43,11 +53,24 @@
   font-style: normal;
   font-size: 60px;
   text-align: center;
+  margin-top: 0;
 }
 
 /* Separate section for signing up if you don't have an account */
 .signup-container {
   position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 1rem;
+  border: 1px solid rgb(219, 219, 219);
+  border-radius: 1px;
+  text-align: center;
+  padding: 1.2rem;
+}
+
+.signup-container a {
+  color: #0095f6;
+  text-decoration: none;
 }
 
 /* Large screen styles */
