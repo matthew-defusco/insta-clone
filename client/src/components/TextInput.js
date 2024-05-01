@@ -2,7 +2,11 @@ import styles from "./TextInput.module.css";
 
 const TextInput = ({ placeholder, name, onChange, className }) => {
   const onChangeHandler = e => {
-    onChange(e.target.value);
+    if (onChange) {
+      onChange(e.target.value);
+    } else {
+      return undefined;
+    }
   };
 
   console.log(className);

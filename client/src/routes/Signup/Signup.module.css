@@ -1,0 +1,52 @@
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.signup {
+  padding: 3rem 3.2rem;
+  border: 1px solid rgb(219, 219, 219);
+  border-radius: 1px;
+}
+
+.signup h1 {
+  font-family: var(--logo-font);
+  margin: 0 0 2rem 0;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: 400;
+}
+
+.signup h2 {
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  width: 13rem;
+}
+
+.signup form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.login-container {
+  position: relative;
+  box-sizing: border-box;
+  padding: 1rem 2.9rem;
+  margin-top: 1rem;
+  border: 1px solid rgb(219, 219, 219);
+  border-radius: 1px;
+  text-align: center;
+  /* padding: 1.2rem; */
+}
+
+.login-container a {
+  color: #0095f6;
+  text-decoration: none;
+}

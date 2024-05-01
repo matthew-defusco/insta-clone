@@ -1,6 +1,11 @@
+/* Global variables */
+:root {
+  --logo-font: "Grand Hotel", cursive;
+}
+
 /* Global styles */
 .container {
-  min-width: 70%;
+  max-width: 70%;
   margin: 0 auto;
 }
 

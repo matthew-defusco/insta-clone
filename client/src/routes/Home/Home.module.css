@@ -48,7 +48,7 @@
 }
 
 .right-section h1 {
-  font-family: "Grand Hotel", cursive;
+  font-family: var(--logo-font);
   font-weight: 400;
   font-style: normal;
   font-size: 60px;

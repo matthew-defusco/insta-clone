@@ -1,14 +1,23 @@
+import { Link } from "react-router-dom";
+
+import { useAuth } from "../../context/auth";
 import Button from "../../components/Button";
 import TextInput from "../../components/TextInput";
 import styles from "./Home.module.css";
 
 const Home = () => {
-  const onUsernameChangeHandler = arg => {
-    console.log(arg);
-  };
+  const auth = useAuth();
 
-  const onPasswordChangeHandler = arg => {
-    console.log(arg);
+  const handleSubmit = async e => {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+
+    const username = formData.get("username");
+    const password = formData.get("password");
+
+    console.log(username, password);
+
+    auth.login({ username, password });
   };
 
   return (
@@ -23,7 +32,7 @@ const Home = () => {
       <section className={styles["right-section"]}>
         <div className={styles["login"]}>
           <h1>Instagram</h1>
-          <form>
+          <form method="POST" onSubmit={handleSubmit}>
             <TextInput
               name="username"
               placeholder="Email, username, or phone number"
@@ -36,9 +45,10 @@ const Home = () => {
             />
             <Button color={"#67B5FA"} label="Log in" />
           </form>
+          {auth.user && "Hello from a logged in state!"}
         </div>
         <div className={styles["signup-container"]}>
-          Don't have an account? <a href="">Sign up</a>
+          Don't have an account? <Link to="/signup">Sign up</Link>
         </div>
       </section>
     </div>
