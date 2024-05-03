@@ -1,3 +1,4 @@
+import cors from "cors";
 import { Router } from "express";
 import { loginSchema, signupSchema } from "../validation/schemas.js";
 import { User } from "../models/user.js";
@@ -40,21 +41,21 @@ router.post("/api/signup", async (req, res, next) => {
 router.post("/api/logout", async (req, res, next) => {
   try {
     await logout(req, res);
-    res.json({ message: "OK" });
+    res.json({ message: "Logged out." });
   } catch (error) {
     next(error);
   }
 });
 
-router.post("api/login", async (req, res, next) => {
+router.post("/api/login", async (req, res, next) => {
   try {
-    const { error } = loginSchema.validate(req.body);
+    const { email, password } = req.body;
+    const { error } = loginSchema.validate({ email, password });
     if (error) {
+      console.log(error);
       res.status(400).json({ message: "Sorry, that input didn't work :(" });
       return;
     }
-
-    const { email, password } = req.body;
 
     const user = await User.findOne({ email });
     if (!user || !(await user.matchesPassword(password))) {
@@ -67,6 +68,13 @@ router.post("api/login", async (req, res, next) => {
   } catch (error) {
     next(error);
   }
+});
+
+router.get("/api/session", (req, res) => {
+  if (req.session.user) {
+    return res.json({ message: "Logged in already", user: req.session.user });
+  }
+  res.json({ message: "Not logged in." });
 });
 
 export default router;

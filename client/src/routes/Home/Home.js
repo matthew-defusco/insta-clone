@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useAuth } from "../../context/auth";
 import Button from "../../components/Button";
@@ -7,17 +7,17 @@ import styles from "./Home.module.css";
 
 const Home = () => {
   const auth = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = async e => {
     e.preventDefault();
     const formData = new FormData(e.currentTarget);
 
-    const username = formData.get("username");
+    const email = formData.get("email");
     const password = formData.get("password");
 
-    console.log(username, password);
-
-    auth.login({ username, password });
+    await auth.login({ email, password });
+    navigate("/dashboard");
   };
 
   return (
@@ -34,15 +34,10 @@ const Home = () => {
           <h1>Instagram</h1>
           <form method="POST" onSubmit={handleSubmit}>
             <TextInput
-              name="username"
+              name="email"
               placeholder="Email, username, or phone number"
-              onChange={onUsernameChangeHandler}
             />
-            <TextInput
-              name="password"
-              placeholder="Password"
-              onChange={onPasswordChangeHandler}
-            />
+            <TextInput name="password" placeholder="Password" />
             <Button color={"#67B5FA"} label="Log in" />
           </form>
           {auth.user && "Hello from a logged in state!"}

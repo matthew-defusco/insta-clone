@@ -6,14 +6,14 @@ import { auth } from "./routes/index.js";
 import mongoose from "mongoose";
 
 const app = express();
-
-app.use(express.json());
-
+// app.options(cors("*"));
 app.use(
   cors({
-    origin: process.env.ORIGIN || "http://localhost:5173",
+    origin: "http://localhost:5173",
+    credentials: true,
   })
 );
+app.use(express.json());
 
 const client = mongoose
   .connect(process.env.MONGO_URI)
@@ -26,13 +26,11 @@ app.use(
     store: MongoStore.create({
       // use the client already set up with mongoose to limit connections
       clientPromise: client,
-      // dbName: "insta-clone",
     }),
     cookie: {
       secure: false,
       // 30 minute idle timeout
       maxAge: 1000 * 60 * 30,
-      sameSite: true,
     },
     rolling: true,
     resave: false,
@@ -43,12 +41,7 @@ app.use(
 );
 
 app.get("/", (req, res) => {
-  res.send({ message: "OK" });
-});
-
-app.get("/api/session", (req, res) => {
-  const user = req.session.user;
-  res.send(user);
+  res.send({ message: "OK", user: req.session.user });
 });
 
 app.use(auth);

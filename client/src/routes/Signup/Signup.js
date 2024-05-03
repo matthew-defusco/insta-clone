@@ -17,18 +17,22 @@ const Signup = () => {
     let fullName = formData.get("fullName");
 
     const user = { email, username, password, fullName };
+    try {
+      const res = await fetch(`http://localhost:3000/api/signup`, {
+        method: "POST",
+        body: JSON.stringify(user),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    const res = await fetch(`http://localhost:3000/api/signup`, {
-      method: "POST",
-      body: JSON.stringify(user),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    const sessionUser = await res.json();
-    auth.login(sessionUser);
-    navigate("/dashboard");
+      const sessionUser = await res.json();
+      // auth.login(sessionUser);
+      // navigate("/dashboard");
+      console.log(sessionUser);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

@@ -3,6 +3,7 @@ import Home from "./routes/Home/Home";
 import { AuthProvider } from "./context/auth";
 import Signup from "./routes/Signup/Signup";
 import Dashboard from "./routes/Dashboard/Dashboard";
+import { RequireAuth } from "./components/RequireAuth";
 
 function App() {
   return (
@@ -11,7 +12,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route element={<RequireAuth />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Route>
         </Routes>
       </div>
     </AuthProvider>
