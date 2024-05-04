@@ -3,21 +3,19 @@ import cors from "cors";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 import { auth } from "./routes/index.js";
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
+import { client } from "./db/index.js";
 
 const app = express();
-// app.options(cors("*"));
 app.use(
   cors({
     origin: "http://localhost:5173",
     credentials: true,
+    methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
   })
 );
 app.use(express.json());
-
-const client = mongoose
-  .connect(process.env.MONGO_URI)
-  .then(m => m.connection.getClient());
+app.use(express.urlencoded({ extended: true }));
 
 app.use(
   session({
@@ -31,6 +29,8 @@ app.use(
       secure: false,
       // 30 minute idle timeout
       maxAge: 1000 * 60 * 30,
+      sameSite: false,
+      httpOnly: true,
     },
     rolling: true,
     resave: false,
@@ -41,7 +41,7 @@ app.use(
 );
 
 app.get("/", (req, res) => {
-  res.send({ message: "OK", user: req.session.user });
+  res.send({ message: "OK" });
 });
 
 app.use(auth);

@@ -25,16 +25,17 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = async () => {
-    const res = await fetch("http://localhost:3000/api/logout", {
+    await fetch("http://localhost:3000/api/logout", {
       method: "POST",
+      credentials: "include",
     });
-    const data = await res.json();
-    console.log(data);
     setUser(null);
   };
 
   const checkLogin = async () => {
-    const res = await fetch("http://localhost:3000/api/session");
+    const res = await fetch("http://localhost:3000/api/session", {
+      credentials: "include",
+    });
     const data = await res.json();
     console.log("Coming from checkLogin context", data);
     return data;

@@ -1,8 +1,6 @@
-import cors from "cors";
 import { Router } from "express";
 import { loginSchema, signupSchema } from "../validation/schemas.js";
 import { User } from "../models/user.js";
-// import { login } from "../utils/login.js";
 import { login, logout } from "../utils/index.js";
 import { sessionizeUser } from "../utils/helpers.js";
 
@@ -41,6 +39,7 @@ router.post("/api/signup", async (req, res, next) => {
 router.post("/api/logout", async (req, res, next) => {
   try {
     await logout(req, res);
+
     res.json({ message: "Logged out." });
   } catch (error) {
     next(error);
@@ -63,7 +62,6 @@ router.post("/api/login", async (req, res, next) => {
     }
 
     login(req, user);
-
     res.json({ message: "Logged in!", user: req.session.user });
   } catch (error) {
     next(error);
@@ -71,10 +69,13 @@ router.post("/api/login", async (req, res, next) => {
 });
 
 router.get("/api/session", (req, res) => {
-  if (req.session.user) {
-    return res.json({ message: "Logged in already", user: req.session.user });
-  }
-  res.json({ message: "Not logged in." });
+  // if (req.session.user) {
+  //   return res.json({ message: "Logged in already", user: req.session.user });
+  // }
+  // res.json({ message: "Not logged in." });
+  console.log("cookies", req.cookies);
+  console.log("session", req.session);
+  res.json({ user: req.session.user });
 });
 
 export default router;
