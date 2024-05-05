@@ -5,8 +5,9 @@ const Dashboard = () => {
 
   const handleLogout = async () => {
     // logout();
-    const res = await fetch("http://localhost:3000/api/logout", {
+    const res = await fetch("/api/logout", {
       method: "POST",
+      credentials: "same-origin",
     });
     const data = await res.json();
     console.log(data);
@@ -14,7 +15,7 @@ const Dashboard = () => {
 
   const handleClick = async () => {
     const res = await fetch("http://localhost:3000/api/session", {
-      credentials: "include",
+      credentials: "same-origin",
     });
     const data = await res.json();
     console.log(data);

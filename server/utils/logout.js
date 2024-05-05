@@ -4,7 +4,6 @@ export const logout = (req, res) => {
       if (err) {
         reject(err);
       }
-      delete req.session;
       res.clearCookie(process.env.SESSION_NAME);
       resolve();
     });

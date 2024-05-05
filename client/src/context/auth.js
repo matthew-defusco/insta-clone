@@ -1,10 +1,10 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
   // TODO: STORE USER IN LOCAL STORAGE OR CHECK DB FOR SESSION
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
 
   const login = async user => {
     try {

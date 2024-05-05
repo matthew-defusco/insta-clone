@@ -9,9 +9,7 @@ import { client } from "./db/index.js";
 const app = express();
 app.use(
   cors({
-    origin: "http://localhost:5173",
-    credentials: true,
-    methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
+    origin: ["http://localhost:5173"],
   })
 );
 app.use(express.json());
@@ -29,8 +27,7 @@ app.use(
       secure: false,
       // 30 minute idle timeout
       maxAge: 1000 * 60 * 30,
-      sameSite: false,
-      httpOnly: true,
+      sameSite: "lax",
     },
     rolling: true,
     resave: false,

@@ -1,3 +1,4 @@
+import cors from "cors";
 import { Router } from "express";
 import { loginSchema, signupSchema } from "../validation/schemas.js";
 import { User } from "../models/user.js";
@@ -36,15 +37,18 @@ router.post("/api/signup", async (req, res, next) => {
   }
 });
 
-router.post("/api/logout", async (req, res, next) => {
-  try {
-    await logout(req, res);
-
-    res.json({ message: "Logged out." });
-  } catch (error) {
-    next(error);
+router.post(
+  "/api/logout",
+  cors({ origin: "http://localhost:5173" }),
+  async (req, res, next) => {
+    try {
+      await logout(req, res);
+      res.json({ message: "Logged out." });
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 
 router.post("/api/login", async (req, res, next) => {
   try {
@@ -74,7 +78,7 @@ router.get("/api/session", (req, res) => {
   // }
   // res.json({ message: "Not logged in." });
   console.log("cookies", req.cookies);
-  console.log("session", req.session);
+  console.log("session", req.session.id);
   res.json({ user: req.session.user });
 });
 
