@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Form, useNavigate } from "react-router-dom";
 
 import { useAuth } from "../../context/auth";
 import Button from "../../components/Button";
@@ -32,15 +32,14 @@ const Home = () => {
       <section className={styles["right-section"]}>
         <div className={styles["login"]}>
           <h1>Instagram</h1>
-          <form method="POST" onSubmit={login}>
+          <Form method="POST">
             <TextInput
               name="email"
               placeholder="Email, username, or phone number"
             />
             <TextInput name="password" placeholder="Password" />
             <Button color={"#67B5FA"} label="Log in" />
-          </form>
-          {auth.user && "Hello from a logged in state!"}
+          </Form>
         </div>
         <div className={styles["signup-container"]}>
           Don't have an account? <Link to="/signup">Sign up</Link>
