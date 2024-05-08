@@ -6,19 +6,19 @@ import TextInput from "../../components/TextInput";
 import styles from "./Home.module.css";
 
 const Home = () => {
-  const auth = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = async e => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
+  // const handleSubmit = async e => {
+  //   e.preventDefault();
+  //   const formData = new FormData(e.currentTarget);
 
-    const email = formData.get("email");
-    const password = formData.get("password");
+  //   const email = formData.get("email");
+  //   const password = formData.get("password");
 
-    await auth.login({ email, password });
-    navigate("/dashboard");
-  };
+  //   await auth.login({ email, password });
+  //   navigate("/dashboard");
+  // };
 
   return (
     <div className={styles["home-container"]}>
@@ -32,7 +32,7 @@ const Home = () => {
       <section className={styles["right-section"]}>
         <div className={styles["login"]}>
           <h1>Instagram</h1>
-          <form method="POST" onSubmit={handleSubmit}>
+          <form method="POST" onSubmit={login}>
             <TextInput
               name="email"
               placeholder="Email, username, or phone number"

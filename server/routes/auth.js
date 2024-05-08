@@ -37,18 +37,14 @@ router.post("/api/signup", async (req, res, next) => {
   }
 });
 
-router.post(
-  "/api/logout",
-  cors({ origin: "http://localhost:5173" }),
-  async (req, res, next) => {
-    try {
-      await logout(req, res);
-      res.json({ message: "Logged out." });
-    } catch (error) {
-      next(error);
-    }
+router.post("/api/logout", async (req, res, next) => {
+  try {
+    await logout(req, res);
+    res.json({ message: "Logged out." });
+  } catch (error) {
+    next(error);
   }
-);
+});
 
 router.post("/api/login", async (req, res, next) => {
   try {
@@ -73,13 +69,14 @@ router.post("/api/login", async (req, res, next) => {
 });
 
 router.get("/api/session", (req, res) => {
-  // if (req.session.user) {
-  //   return res.json({ message: "Logged in already", user: req.session.user });
-  // }
-  // res.json({ message: "Not logged in." });
+  if (req.session.user) {
+    console.log("cookies", req.cookies);
+    console.log("session", req.session.id);
+    return res.json({ message: "Logged in already", user: req.session.user });
+  }
   console.log("cookies", req.cookies);
   console.log("session", req.session.id);
-  res.json({ user: req.session.user });
+  res.json({ message: "Not logged in." });
 });
 
 export default router;
