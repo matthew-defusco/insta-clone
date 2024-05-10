@@ -21,7 +21,7 @@ export const signupAction =
       });
 
       await login({ email, password });
-      return redirect("/dashboard");
+      return redirect("/home");
     } catch (error) {
       console.log(error);
     }

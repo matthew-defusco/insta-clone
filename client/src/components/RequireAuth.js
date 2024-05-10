@@ -1,8 +1,17 @@
 import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../context/auth";
+import UserLayout from "../routes/UserLayout/UserLayout";
 
-export const RequireAuth = ({ element }) => {
+export const RequireAuth = () => {
   const { user } = useAuth();
 
-  return user ? element || <Outlet /> : <Navigate to="/" />;
+  if (!user) {
+    return <Navigate to="/" replace />;
+  }
+
+  return (
+    <UserLayout>
+      <Outlet />
+    </UserLayout>
+  );
 };

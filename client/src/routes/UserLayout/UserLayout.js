@@ -1,7 +1,7 @@
-import { Form } from "react-router-dom";
+import { Form, Outlet } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 
-const Dashboard = () => {
+const UserLayout = () => {
   const { user } = useAuth();
 
   return (
@@ -10,8 +10,9 @@ const Dashboard = () => {
       <Form method="POST">
         <button type="submit">Logout</button>
       </Form>
+      <Outlet />
     </div>
   );
 };
 
-export default Dashboard;
+export default UserLayout;
