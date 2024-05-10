@@ -1,10 +1,9 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
-const AuthContext = createContext(null);
+const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  // TODO: STORE USER IN LOCAL STORAGE OR CHECK DB FOR SESSION
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("authed")));
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 
   const login = async user => {
     try {
@@ -22,7 +21,7 @@ export const AuthProvider = ({ children }) => {
       console.log("Coming from the login auth context", data);
       if (data.user) {
         setUser(data.user);
-        localStorage.setItem("authed", JSON.stringify(true));
+        localStorage.setItem("user", JSON.stringify(data.user));
       }
     } catch (error) {
       console.log(error);
@@ -37,7 +36,7 @@ export const AuthProvider = ({ children }) => {
     });
     const data = await res.json();
     console.log(data);
-    localStorage.setItem("authed", JSON.stringify(false));
+    localStorage.removeItem("user");
     setUser(null);
   };
 

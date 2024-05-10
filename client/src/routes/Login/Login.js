@@ -1,27 +1,11 @@
-import { Link, Form, useNavigate } from "react-router-dom";
-
-import { useAuth } from "../../context/auth";
-import Button from "../../components/Button";
+import { Form, Link } from "react-router-dom";
 import TextInput from "../../components/TextInput";
-import styles from "./Home.module.css";
+import Button from "../../components/Button";
+import styles from "./Login.module.css";
 
-const Home = () => {
-  const { login } = useAuth();
-  const navigate = useNavigate();
-
-  // const handleSubmit = async e => {
-  //   e.preventDefault();
-  //   const formData = new FormData(e.currentTarget);
-
-  //   const email = formData.get("email");
-  //   const password = formData.get("password");
-
-  //   await auth.login({ email, password });
-  //   navigate("/dashboard");
-  // };
-
+const Login = () => {
   return (
-    <div className={styles["home-container"]}>
+    <>
       <section className={styles["left-section"]}>
         <img
           className={`${styles["phone-demo"]} ${styles["phone-2"]}`}
@@ -45,8 +29,8 @@ const Home = () => {
           Don't have an account? <Link to="/signup">Sign up</Link>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 
-export default Home;
+export default Login;

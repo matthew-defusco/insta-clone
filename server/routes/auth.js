@@ -32,7 +32,6 @@ router.post("/api/signup", async (req, res, next) => {
 
     res.send(sessionUser);
   } catch (err) {
-    // console.log(err);
     next(err);
   }
 });

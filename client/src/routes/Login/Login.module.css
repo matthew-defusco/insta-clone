@@ -1,0 +1,75 @@
+/************* Left side of the home screen *************/
+
+/* Don't show the phone section on small screens */
+.left-section {
+  display: none;
+}
+
+.phone-demo {
+  height: 34rem;
+}
+
+.phone-2 {
+  position: relative;
+  top: 3rem;
+  margin-left: 6rem;
+}
+/************** Right side of the home screen ***************/
+.right-section {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.login {
+  padding: 3rem 3.2rem;
+  border: 1px solid rgb(219, 219, 219);
+  border-radius: 1px;
+}
+
+.login form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.right-section h1 {
+  font-family: var(--logo-font);
+  font-weight: 400;
+  font-style: normal;
+  font-size: 60px;
+  text-align: center;
+  margin-top: 0;
+}
+
+/* Separate section for signing up if you don't have an account */
+.signup-container {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 1rem;
+  border: 1px solid rgb(219, 219, 219);
+  border-radius: 1px;
+  text-align: center;
+  padding: 1.2rem;
+}
+
+.signup-container a {
+  color: #0095f6;
+  text-decoration: none;
+}
+
+/* Large screen styles */
+@media screen and (min-width: 900px) {
+  .left-section {
+    display: unset;
+    width: auto;
+    background-image: url("/profile-portrait.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
