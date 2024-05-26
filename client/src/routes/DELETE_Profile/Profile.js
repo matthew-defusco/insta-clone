@@ -4,9 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./Profile.module.css";
-import { useAuth } from "../../context/auth";
-import Button from "../../components/Button";
-import Modal from "../../components/Modal/Modal";
+import { useAuth } from "../../context/auth.js";
+import Button from "../../components/common/Button/Button.js";
+import Modal from "../../components/common/Modal/Modal.js";
 
 const Profile = () => {
   const { user, logout } = useAuth();
@@ -39,14 +39,19 @@ const Profile = () => {
             </a>
           </div>
           <div className={styles["profile-header-actions"]}>
-            <Button>Edit profile</Button>
-            <Button>Logout</Button>
+            <Button color="black">Edit profile</Button>
+            <Button color="black" onClick={handleLogout}>
+              Logout
+            </Button>
           </div>
         </div>
       </header>
+      <div className={styles.divider}></div>
       <Modal isOpen={openModal} onClose={handleClose} className={styles.modal}>
-        <a onClick={handleLogout}>Log Out</a>
-        <a onClick={handleClose}>Cancel</a>
+        <div className={styles["modal-container"]}>
+          <a onClick={handleLogout}>Log Out</a>
+          <a onClick={handleClose}>Cancel</a>
+        </div>
       </Modal>
     </div>
   );

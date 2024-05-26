@@ -31,11 +31,9 @@ const Modal = ({ isOpen, onClose, children, ...props }) => {
     <dialog
       ref={modalRef}
       onClick={handleClickOutside}
-      className={styles.modal}
+      className={`${styles.modal} ${props.className}`}
     >
-      <div className={`${styles["modal-container"]} ${props.className}`}>
-        {children}
-      </div>
+      <div className={`${styles["modal-container"]} `}>{children}</div>
     </dialog>
   );
 };

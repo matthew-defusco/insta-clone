@@ -8,8 +8,9 @@ import BaseError from "./components/errors/BaseError";
 import Layout from "./routes/Layout/Layout";
 import Login from "./routes/Login/Login";
 import Signup from "./routes/Signup/Signup";
-import Profile from "./routes/Profile/Profile";
+import Profile from "./routes/DELETE_Profile/Profile";
 import Feed from "./routes/Feed/Feed";
+import ProfileLayout from "./routes/ProfileLayout/ProfileLayout";
 
 function App() {
   const authContext = useAuth();
@@ -36,8 +37,9 @@ function App() {
               element: <Feed />,
             },
             {
-              path: "profile",
-              element: <Profile />,
+              path: "me",
+              // element: <Profile />,
+              element: <ProfileLayout profileUser={authContext.user} />,
             },
             {
               path: "logout",

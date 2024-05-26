@@ -7,12 +7,14 @@ const Button = ({
   label,
   className,
   children,
+  ...props
 }) => {
   return (
     <button
       className={`${className} ${styles["button"]}`}
       type={type}
       style={{ backgroundColor: backgroundColor, color: color }}
+      {...props}
     >
       {children ? children : label}
     </button>

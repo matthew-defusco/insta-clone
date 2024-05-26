@@ -6,6 +6,7 @@
   --logo-font: "Grand Hotel", cursive;
   --main-font: "Roboto", sans-serif;
   --input-grey: rgba(220, 220, 220, 0.3);
+  --light-grey: #bbb8b8;
 }
 
 /* Global styles */
@@ -16,4 +17,5 @@
 * {
   font-family: var(--main-font);
   box-sizing: border-box;
+  margin: 0;
 }

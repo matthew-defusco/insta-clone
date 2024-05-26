@@ -1,0 +1,74 @@
+.container {
+  /* width: 100%;
+  padding: 0 2rem; */
+  margin: 2rem auto;
+}
+
+.profile-header {
+  display: grid;
+  padding: 0 2rem;
+  grid-template-columns: 120px 250px;
+  margin-bottom: 2rem;
+}
+
+.profile-image {
+  width: 77px;
+}
+
+.profile-header-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+.right-section {
+  display: grid;
+  grid-template-rows: 35px 35px;
+  row-gap: 1rem;
+}
+
+.username {
+  display: flex;
+  align-items: center;
+}
+
+.username p {
+  font-size: larger;
+}
+
+.username a svg {
+  height: 1.7rem;
+  padding: 0.75rem;
+  color: grey;
+  cursor: pointer;
+}
+
+/* Custom modal styles */
+.modal {
+  border-radius: 8px;
+  width: 60%;
+}
+
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  align-items: center;
+}
+
+.modal a {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.modal a:first-child {
+  border-bottom: 1px solid var(--input-grey);
+}
+
+/* Tabs */
+.tab-container {
+  display: flex;
+}

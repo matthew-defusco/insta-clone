@@ -1,7 +1,7 @@
 import { Form, Link } from "react-router-dom";
-import TextInput from "../../components/TextInput";
 import styles from "./Signup.module.css";
-import Button from "../../components/Button";
+import TextInput from "../../components/common/Input/TextInput.js";
+import Button from "../../components/common/Button/Button.js";
 
 const Signup = () => {
   return (

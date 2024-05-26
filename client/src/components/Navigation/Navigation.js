@@ -31,7 +31,7 @@ const Navigation = () => {
           </Link>
         </li>
         <li>
-          <Link to="/profile">
+          <Link to="/me">
             <FontAwesomeIcon icon={faCircleUser} />
           </Link>
         </li>
