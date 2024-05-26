@@ -8,7 +8,7 @@ export const loginAction = authContext => {
     const password = formData.get("password");
     try {
       await login({ email, password });
-      return redirect("/home");
+      return redirect("/feed");
     } catch (error) {
       return {
         error: "Invalid login attempt.",

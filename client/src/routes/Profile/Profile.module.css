@@ -1,0 +1,46 @@
+.container {
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+.profile-header {
+  display: grid;
+  grid-template-columns: 150px 250px;
+}
+
+.profile-image {
+  width: 77px;
+}
+
+.profile-header-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-start;
+}
+
+.right-section {
+  display: grid;
+  grid-template-rows: 35px 35px;
+  row-gap: 1rem;
+}
+
+.username {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+}
+
+.username p {
+  font-size: larger;
+}
+
+.username a svg {
+  height: 1.7rem;
+  padding: 0.75rem;
+  color: grey;
+}
+
+/* Custom modal styles */
+.modal {
+  border-radius: 5px;
+}

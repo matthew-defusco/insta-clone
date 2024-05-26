@@ -22,7 +22,7 @@ const Login = () => {
               placeholder="Email, username, or phone number"
             />
             <TextInput name="password" placeholder="Password" />
-            <Button color={"#67B5FA"} label="Log in" />
+            <Button backgroundColor={"#67B5FA"} label="Log in" />
           </Form>
         </div>
         <div className={styles["signup-container"]}>

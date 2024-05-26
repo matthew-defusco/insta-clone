@@ -1,4 +1,3 @@
-import cors from "cors";
 import { Router } from "express";
 import { loginSchema, signupSchema } from "../validation/schemas.js";
 import { User } from "../models/user.js";

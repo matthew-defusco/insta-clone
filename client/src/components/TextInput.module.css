@@ -15,10 +15,11 @@
 .input label span {
   font-size: 13px;
   color: lightgray;
+  margin: 0;
 }
 
 .input input {
-  padding: 0.5rem;
+  padding: calc(2.15rem / 2) 0.5rem;
   height: 1.2rem;
   width: 13rem;
   background-color: rgba(220, 220, 220, 0.3);
@@ -27,7 +28,7 @@
 }
 
 .input input:valid {
-  padding: 0.85rem 0.5rem 0.2rem 0.5rem;
+  padding: 1.3rem 0.5rem 0.85rem 0.5rem;
   font-size: 13px;
 }
 

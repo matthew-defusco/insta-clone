@@ -1,8 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap");
-
 .home-container {
   display: flex;
-  gap: 4.5rem;
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
@@ -81,5 +78,8 @@
     background-image: url("/profile-portrait.png");
     background-repeat: no-repeat;
     background-size: contain;
+  }
+  .home-container {
+    gap: 4rem;
   }
 }

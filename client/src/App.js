@@ -8,14 +8,14 @@ import BaseError from "./components/errors/BaseError";
 import Layout from "./routes/Layout/Layout";
 import Login from "./routes/Login/Login";
 import Signup from "./routes/Signup/Signup";
-import UserLayout from "./routes/UserLayout/UserLayout";
-import Test from "./components/Test";
+import Profile from "./routes/Profile/Profile";
+import Feed from "./routes/Feed/Feed";
 
 function App() {
   const authContext = useAuth();
   const router = createBrowserRouter([
     {
-      path: "/",
+      // path: "/",
       element: <Layout />,
       children: [
         {
@@ -29,13 +29,19 @@ function App() {
           action: signupAction(authContext),
         },
         {
-          path: "/home",
           element: <RequireAuth />,
-          action: logoutAction(authContext),
           children: [
             {
-              path: "test",
-              element: <Test />,
+              path: "feed",
+              element: <Feed />,
+            },
+            {
+              path: "profile",
+              element: <Profile />,
+            },
+            {
+              path: "logout",
+              action: logoutAction(authContext),
             },
           ],
         },

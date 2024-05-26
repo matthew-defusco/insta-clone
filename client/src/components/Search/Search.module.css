@@ -1,0 +1,31 @@
+.search {
+  display: flex;
+  flex-direction: row-reverse;
+  height: 60%;
+  background-color: var(--input-grey);
+  border-radius: 8px;
+  width: 14rem;
+  padding-left: 1rem;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.search svg {
+  color: rgb(84, 84, 84);
+}
+
+.search-input {
+  border: none;
+  background-color: transparent;
+  margin-left: 10px;
+  width: 80%;
+  outline: none;
+}
+
+.search-input:focus {
+  margin-left: 0;
+}
+
+.search-input:focus + svg {
+  display: none;
+}

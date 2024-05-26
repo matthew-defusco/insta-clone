@@ -1,13 +1,20 @@
 import styles from "./Button.module.css";
 
-const Button = ({ color, type = "submit", label, className }) => {
+const Button = ({
+  backgroundColor,
+  color = "#ffffff",
+  type = "submit",
+  label,
+  className,
+  children,
+}) => {
   return (
     <button
       className={`${className} ${styles["button"]}`}
       type={type}
-      style={{ backgroundColor: color }}
+      style={{ backgroundColor: backgroundColor, color: color }}
     >
-      {label}
+      {children ? children : label}
     </button>
   );
 };

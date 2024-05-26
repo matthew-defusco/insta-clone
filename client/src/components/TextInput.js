@@ -9,11 +9,15 @@ const TextInput = ({ placeholder, name, onChange, className }) => {
     }
   };
 
-  console.log(className);
-
   return (
     <div className={`${styles["input"]} ${className}`}>
-      <input type="text" required name={name} onChange={onChangeHandler} />
+      <input
+        type="text"
+        required
+        name={name}
+        onChange={onChangeHandler}
+        id={name}
+      />
       <label htmlFor={name}>
         <span>{placeholder}</span>
       </label>

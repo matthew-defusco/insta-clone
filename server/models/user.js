@@ -6,8 +6,12 @@ const userSchema = new Schema(
   {
     email: String,
     fullName: String,
-    username: String,
+    username: { type: String, unique: true },
     password: String,
+    profileImagePath: {
+      type: String,
+      default: "profile-images/default_avatar.jpeg",
+    },
   },
   {
     timestamps: true,
@@ -22,7 +26,8 @@ userSchema.pre("save", async function () {
 });
 
 // Appends a method to instances of users to be able to compare passwords
-userSchema.methods.matchesPassword = function (password) {
+userSchema.methods.matchesPassword = async function (password) {
   return compare(password, this.password);
 };
+
 export const User = model("User", userSchema);
