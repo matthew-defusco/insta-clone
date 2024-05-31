@@ -12,6 +12,8 @@ const userSchema = new Schema(
       type: String,
       default: "profile-images/default_avatar.jpeg",
     },
+    following: [{ type: Schema.Types.ObjectId, ref: "User" }],
+    posts: [{ type: Schema.Types.ObjectId, ref: "Post" }],
   },
   {
     timestamps: true,
