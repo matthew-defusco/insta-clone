@@ -5,6 +5,7 @@ import { faGear } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./ProfileLayout.module.css";
 import { useAuth } from "../../context/auth.js";
+import { config } from "../../config";
 import Button from "../../components/common/Button/Button.js";
 import Modal from "../../components/common/Modal/Modal.js";
 import Divider from "../../components/common/Divider/Divider";
@@ -16,6 +17,7 @@ const ProfileLayout = ({ profileUser }) => {
   const [openModal, setOpenModal] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
   const navigate = useNavigate();
+  const URL = config.url;
   let profileActions;
   let modalActions;
 
@@ -68,7 +70,7 @@ const ProfileLayout = ({ profileUser }) => {
       <header className={styles["profile-header"]}>
         <img
           className={styles["profile-image"]}
-          src={`http://localhost:3000/${user.profileImage}`}
+          src={`${URL}/${user.profileImage}`}
           alt=""
         />
         <div className={styles["right-section"]}>

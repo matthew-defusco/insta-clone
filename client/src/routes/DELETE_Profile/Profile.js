@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./Profile.module.css";
+import { config } from "../../config";
 import { useAuth } from "../../context/auth.js";
 import Button from "../../components/common/Button/Button.js";
 import Modal from "../../components/common/Modal/Modal.js";
@@ -12,6 +13,7 @@ const Profile = () => {
   const { user, logout } = useAuth();
   const [openModal, setOpenModal] = useState(false);
   const navigate = useNavigate();
+  const URL = config.url;
   // Update the state so that it's not permanently set to "false"
   // This lets you re-open the modal again once it's been closed in any way
   const handleClose = () => {
@@ -28,7 +30,7 @@ const Profile = () => {
       <header className={styles["profile-header"]}>
         <img
           className={styles["profile-image"]}
-          src={`http://localhost:3000/${user.profileImage}`}
+          src={`${URL}/${user.profileImage}`}
           alt=""
         />
         <div className={styles["right-section"]}>
