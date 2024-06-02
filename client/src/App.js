@@ -12,6 +12,7 @@ import Signup from "./routes/Signup/Signup";
 import Feed from "./routes/Feed/Feed";
 import AddPost from "./routes/AddPost/AddPost";
 import ProfileLayout from "./routes/ProfileLayout/ProfileLayout";
+import { profileLoader } from "./loaders/profileLoader";
 
 function App() {
   const authContext = useAuth();
@@ -39,8 +40,8 @@ function App() {
             },
             {
               path: "me",
-              // element: <Profile />,
               element: <ProfileLayout profileUser={authContext.user} />,
+              loader: profileLoader(authContext),
             },
             {
               path: "create",

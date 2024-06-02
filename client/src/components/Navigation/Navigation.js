@@ -13,7 +13,7 @@ const Navigation = () => {
     <nav className={styles.nav}>
       <ul>
         <li>
-          <Link to="/home">
+          <Link to="/feed">
             <FontAwesomeIcon icon={faHouse} />
           </Link>
         </li>

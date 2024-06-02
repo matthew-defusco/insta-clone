@@ -13,7 +13,6 @@ const userSchema = new Schema(
       default: "profile-images/default_avatar.jpeg",
     },
     following: [{ type: Schema.Types.ObjectId, ref: "User" }],
-    posts: [{ type: Schema.Types.ObjectId, ref: "Post" }],
   },
   {
     timestamps: true,
@@ -31,5 +30,12 @@ userSchema.pre("save", async function () {
 userSchema.methods.matchesPassword = async function (password) {
   return compare(password, this.password);
 };
+
+// Create a virtual property to be able to populate all of the posts for a user
+userSchema.virtual("posts", {
+  ref: "Post",
+  localField: "_id",
+  foreignField: "creator",
+});
 
 export const User = model("User", userSchema);

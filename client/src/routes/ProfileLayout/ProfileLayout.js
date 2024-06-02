@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLoaderData } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 
@@ -16,6 +16,7 @@ const ProfileLayout = ({ profileUser }) => {
   const { user, logout } = useAuth();
   const [openModal, setOpenModal] = useState(false);
   const [activeTab, setActiveTab] = useState(0);
+  const posts = useLoaderData();
   const navigate = useNavigate();
   const URL = config.url;
   let profileActions;
@@ -99,7 +100,7 @@ const ProfileLayout = ({ profileUser }) => {
         })}
       </div>
       <Divider />
-      <ProfileContent selectedTab={tabs[activeTab]} />
+      <ProfileContent selectedTab={tabs[activeTab]} posts={posts} />
       <Modal isOpen={openModal} onClose={handleClose} className={styles.modal}>
         <div className={styles["modal-container"]}>
           <a onClick={handleLogout}>Log Out</a>
