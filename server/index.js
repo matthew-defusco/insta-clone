@@ -6,6 +6,7 @@ import { auth, posts } from "./routes/index.js";
 import { client } from "./db/index.js";
 import { config } from "./config.js";
 
+const PORT = process.env.PORT || 3000;
 const app = express();
 const URL = config.url;
 app.use(
@@ -14,6 +15,7 @@ app.use(
     credentials: true,
   })
 );
+console.log(process.env.NODE_ENV);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
@@ -52,6 +54,6 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: err.message });
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`listening on port ${process.env.PORT}`);
+app.listen(PORT, () => {
+  console.log(`listening on port ${PORT}`);
 });
