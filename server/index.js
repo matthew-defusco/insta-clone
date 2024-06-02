@@ -2,14 +2,15 @@ import express from "express";
 import cors from "cors";
 import session from "express-session";
 import MongoStore from "connect-mongo";
-import { auth } from "./routes/index.js";
-// import mongoose from "mongoose";
+import { auth, posts } from "./routes/index.js";
 import { client } from "./db/index.js";
+import { config } from "./config.js";
 
 const app = express();
+const URL = config.url;
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: [URL],
     credentials: true,
   })
 );
@@ -44,6 +45,7 @@ app.get("/", (req, res) => {
 });
 
 app.use(auth);
+app.use(posts);
 
 app.use((err, req, res, next) => {
   // console.log(err);

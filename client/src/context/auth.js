@@ -1,13 +1,15 @@
 import { createContext, useContext, useState } from "react";
+import { config } from "../config";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+  const URL = config.url;
 
   const login = async user => {
     try {
-      const res = await fetch("http://localhost:3000/api/login", {
+      const res = await fetch(URL + "/api/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -29,7 +31,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = async () => {
-    const res = await fetch("http://localhost:3000/api/logout", {
+    const res = await fetch(URL + "/api/logout", {
       method: "POST",
       credentials: "include",
       mode: "cors",
@@ -41,7 +43,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const checkLogin = async () => {
-    const res = await fetch("http://localhost:3000/api/session");
+    const res = await fetch(URL + "/api/session");
     const data = await res.json();
     console.log("Coming from checkLogin context", data);
     if (data.user) {

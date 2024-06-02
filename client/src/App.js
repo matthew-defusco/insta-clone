@@ -4,12 +4,13 @@ import { RequireAuth } from "./components/RequireAuth";
 import { loginAction } from "./actions/loginAction";
 import { logoutAction } from "./actions/logoutAction";
 import { signupAction } from "./actions/signupAction";
+import { addPost } from "./actions/addPostAction";
 import BaseError from "./components/errors/BaseError";
 import Layout from "./routes/Layout/Layout";
 import Login from "./routes/Login/Login";
 import Signup from "./routes/Signup/Signup";
-import Profile from "./routes/DELETE_Profile/Profile";
 import Feed from "./routes/Feed/Feed";
+import AddPost from "./routes/AddPost/AddPost";
 import ProfileLayout from "./routes/ProfileLayout/ProfileLayout";
 
 function App() {
@@ -40,6 +41,11 @@ function App() {
               path: "me",
               // element: <Profile />,
               element: <ProfileLayout profileUser={authContext.user} />,
+            },
+            {
+              path: "create",
+              action: addPost,
+              element: <AddPost />,
             },
             {
               path: "logout",
