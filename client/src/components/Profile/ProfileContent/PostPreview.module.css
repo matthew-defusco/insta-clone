@@ -1,0 +1,14 @@
+.image-container {
+  /* Set the min width and height to be
+  auto calculated based on a 400px minimum and 3 column setup */
+  min-width: calc(400 / 3);
+  min-height: calc(400 / 3);
+  /* Make the container a square no matter what */
+  aspect-ratio: 1/1;
+}
+
+.image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}

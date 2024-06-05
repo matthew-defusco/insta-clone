@@ -67,7 +67,7 @@ const ProfileLayout = ({ profileUser }) => {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles["profile-container"]}>
       <header className={styles["profile-header"]}>
         <img
           className={styles["profile-image"]}

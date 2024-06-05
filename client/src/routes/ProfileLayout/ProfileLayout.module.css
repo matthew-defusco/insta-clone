@@ -1,7 +1,6 @@
-.container {
-  /* width: 100%;
-  padding: 0 2rem; */
+.profile-container {
   margin: 2rem auto;
+  height: auto;
 }
 
 .profile-header {

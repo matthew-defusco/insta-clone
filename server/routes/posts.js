@@ -63,17 +63,12 @@ router.get("/api/posts", auth, async (req, res) => {
 router.post("/api/posts", auth, upload.single("image"), async (req, res) => {
   const image = req.file.buffer;
   const caption = req.body.caption;
-
-  const resizedImage = await sharp(image)
-    .resize({ height: 1920, width: 1080, fit: "contain" })
-    .toBuffer();
-
   const imageName = randomImageName();
 
   const putObjectParams = {
     Bucket: bucketName,
     Key: imageName,
-    Body: resizedImage,
+    Body: image,
     ContentType: req.file.mimetype,
   };
 
