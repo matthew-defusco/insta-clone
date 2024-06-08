@@ -1,5 +1,5 @@
 const production = {
-  url: "https://something.render.com",
+  url: "https://insta-clone-zhf0.onrender.com",
 };
 
 const development = {

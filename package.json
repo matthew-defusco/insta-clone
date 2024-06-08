@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "devserver": "npm run dev --prefix server",
+    "devserver": "npm run start --prefix server",
     "devclient": "npm run dev --prefix client",
-    "dev": "concurrently \"npm run devserver\" \"npm run devclient\"",
     "clientinstall": "npm install --prefix client",
     "serverinstall": "npm install --prefix server",
     "install": "npm run clientinstall && npm run serverinstall",
