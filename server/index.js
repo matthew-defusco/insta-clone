@@ -28,10 +28,9 @@ app.use(
       clientPromise: client,
     }),
     cookie: {
-      secure: false,
+      secure: true,
       // 30 minute idle timeout
       maxAge: 1000 * 60 * 30,
-      sameSite: "lax",
     },
     rolling: true,
     resave: false,
