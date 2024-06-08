@@ -11,7 +11,7 @@
     "install": "npm run clientinstall && npm run serverinstall",
     "clientbuild": "npm run build --prefix client",
     "build": "npm run install && npm run clientbuild",
-    "start": "npm run start --prefex server"
+    "startserver": "npm run dev --prefex server"
   },
   "keywords": [],
   "author": "",
