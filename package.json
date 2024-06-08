@@ -8,7 +8,7 @@
     "dev": "concurrently \"npm run devserver\" \"npm run devclient\"",
     "clientinstall": "npm install --prefix client",
     "serverinstall": "npm install --prefix server",
-    "install": "npm run clientinstall && npm run server install",
+    "install": "npm run clientinstall && npm run serverinstall",
     "clientbuild": "npm run build --prefix client",
     "build": "npm run install && npm run clientbuild",
     "start": "node index.js --prefix server"
