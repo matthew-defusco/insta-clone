@@ -29,6 +29,7 @@ app.use(
     }),
     cookie: {
       secure: true,
+      sameSite: "none",
       // 30 minute idle timeout
       maxAge: 1000 * 60 * 30,
     },
