@@ -10,7 +10,7 @@ import { config } from "./config.js";
 const PORT = process.env.PORT || 3000;
 const app = express();
 const URL = config.url;
-// app.set("trust proxy", 1);
+app.set("trust proxy", 1);
 
 app.use(
   cors({
@@ -34,7 +34,8 @@ app.use(
     }),
     cookie: {
       secure: process.env.NODE_ENV === "production",
-      domain: process.env.NODE_ENV === "production" ? "j0973jd.xyz" : undefined,
+      domain:
+        process.env.NODE_ENV === "production" ? ".j0973jd.xyz" : undefined,
       sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       httpOnly: true,
       // 30 minute idle timeout
