@@ -33,8 +33,7 @@ app.use(
     }),
     cookie: {
       secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
-      // secure: false,
+      sameSite: process.env.NODE_ENV === "production" ? "strict" : "lax",
       // 30 minute idle timeout
       maxAge: 1000 * 60 * 30,
     },
