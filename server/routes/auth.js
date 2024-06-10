@@ -60,7 +60,6 @@ router.post("/api/login", async (req, res, next) => {
     }
 
     login(req, user);
-    console.log(req.session);
     res.json({ message: "Logged in!", user: req.session.user });
   } catch (error) {
     next(error);

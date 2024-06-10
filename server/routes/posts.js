@@ -38,7 +38,7 @@ router.get("/api/posts/:userId", auth, async (req, res) => {
     post.imageUrl = url;
   }
 
-  console.log(req.cookies.sid);
+  // console.log(req.cookies.sid);
 
   res.json({ posts });
 });
