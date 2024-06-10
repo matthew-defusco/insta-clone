@@ -15,7 +15,7 @@ app.set("trust proxy", 1);
 app.use(
   cors({
     // origin: [URL, "j0973jd.xyz"],
-    origin: ["https://j0973jd.xyz", "http://localhost:5173"],
+    origin: [".j0973jd.xyz", "http://localhost:5173"],
     credentials: true,
     methods: ["GET", "POST"],
   })
@@ -37,7 +37,8 @@ app.use(
       secure: process.env.NODE_ENV === "production",
       domain:
         process.env.NODE_ENV === "production" ? ".j0973jd.xyz" : undefined,
-      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      // sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      sameSite: "lax",
       httpOnly: true,
       // 30 minute idle timeout
       maxAge: 1000 * 60 * 30,
