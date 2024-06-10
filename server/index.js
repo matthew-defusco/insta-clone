@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 const URL = config.url;
 
+app.enable("trust proxy");
 app.use(
   cors({
     origin: ["https://app.j0973jd.xyz", "http://localhost:5173"],
@@ -32,8 +33,9 @@ app.use(
       clientPromise: client,
     }),
     cookie: {
+      httpOnly: true,
       secure: process.env.NODE_ENV === "production",
-      sameSite: process.env.NODE_ENV === "production" ? "strict" : "lax",
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       // 30 minute idle timeout
       maxAge: 1000 * 60 * 30,
     },
