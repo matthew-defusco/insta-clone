@@ -15,7 +15,7 @@ const URL = config.url;
 app.use(
   cors({
     // origin: [URL, "j0973jd.xyz"],
-    origin: [".j0973jd.xyz", "http://localhost:5173"],
+    origin: ["https://j0973jd.xyz", "http://localhost:5173"],
     credentials: true,
   })
 );
