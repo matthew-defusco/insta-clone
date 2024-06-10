@@ -11,34 +11,14 @@ const PORT = process.env.PORT || 3000;
 const app = express();
 const URL = config.url;
 
-// app.use(
-//   cors({
-//     // origin: [URL, "j0973jd.xyz"],
-//     origin: ["*.j0973jd.xyz", "http://localhost:5173"],
-//     credentials: true,
-//     methods: ["GET", "POST"],
-//   })
-// );
-app.all("/*", function (req, res, next) {
-  // CORS headers
-  res.header("Access-Control-Allow-Origin", "*.j0973jd.xyz"); // restrict it to the required domain
-  res.header("Access-Control-Allow-Credentials", "true");
-  res.header(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PATCH, PUT, DELETE, OPTIONS"
-  );
-  // Set custom headers for CORS
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Access-Control-Allow-Headers, save-path, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, Authorization, X-Access-Token, X-Key"
-  );
-  if (req.method == "OPTIONS") {
-    res.status(200).end();
-  } else {
-    next();
-  }
-});
-
+app.use(
+  cors({
+    // origin: [URL, "j0973jd.xyz"],
+    origin: ["https://app.j0973jd.xyz", "http://localhost:5173"],
+    credentials: true,
+    methods: ["GET", "POST", "OPTIONS"],
+  })
+);
 app.set("trust proxy", 1);
 
 app.use(cookieParser());
