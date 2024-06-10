@@ -6,7 +6,6 @@ export const profileLoader = authContext => async () => {
 
   const posts = await fetch(`${URL}/api/posts/${user.userId}`, {
     credentials: "include",
-    mode: "cors",
   });
   return posts;
 };

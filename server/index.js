@@ -41,9 +41,10 @@ app.use(
       // 30 minute idle timeout
       maxAge: 1000 * 60 * 30,
     },
-    rolling: true,
+    // rolling: true,
     resave: false,
-    saveUninitialized: false,
+    // saveUninitialized: false,
+    saveUninitialized: true,
     // deletes the session from the db
     unset: "destroy",
   })
