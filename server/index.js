@@ -17,6 +17,7 @@ app.use(
     // origin: [URL, "j0973jd.xyz"],
     origin: ["https://j0973jd.xyz", "http://localhost:5173"],
     credentials: true,
+    methods: ["GET", "POST"],
   })
 );
 app.use(cookieParser());
