@@ -13,13 +13,10 @@ const URL = config.url;
 
 app.use(
   cors({
-    // origin: [URL, "j0973jd.xyz"],
     origin: ["https://app.j0973jd.xyz", "http://localhost:5173"],
     credentials: true,
-    methods: ["GET", "POST", "OPTIONS"],
   })
 );
-app.set("trust proxy", 1);
 
 app.use(cookieParser());
 app.use(express.json());
@@ -37,14 +34,13 @@ app.use(
     cookie: {
       // secure: process.env.NODE_ENV === "production",
       sameSite: "lax",
-      httpOnly: true,
+      secure: false,
       // 30 minute idle timeout
       maxAge: 1000 * 60 * 30,
     },
-    // rolling: true,
+    rolling: true,
     resave: false,
-    // saveUninitialized: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     // deletes the session from the db
     unset: "destroy",
   })

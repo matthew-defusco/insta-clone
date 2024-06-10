@@ -5,8 +5,7 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
-  // const URL = config.url;
-  const URL = "https://api.j0973jd.xyz";
+  const URL = config.url;
 
   const login = async user => {
     try {
