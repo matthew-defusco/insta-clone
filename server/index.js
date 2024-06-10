@@ -9,6 +9,8 @@ import { config } from "./config.js";
 const PORT = process.env.PORT || 3000;
 const app = express();
 const URL = config.url;
+app.set("trust proxy", 1);
+
 app.use(
   cors({
     origin: [URL],
@@ -28,8 +30,10 @@ app.use(
       clientPromise: client,
     }),
     cookie: {
-      secure: false,
-      sameSite: "lax",
+      secure: process.env.NODE_ENV === "production",
+      domain:
+        process.env.NODE_ENV === "production" ? ".onrender.com" : undefined,
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       httpOnly: true,
       // 30 minute idle timeout
       maxAge: 1000 * 60 * 30,
