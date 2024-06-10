@@ -10,11 +10,12 @@ import { config } from "./config.js";
 const PORT = process.env.PORT || 3000;
 const app = express();
 const URL = config.url;
-app.set("trust proxy", 1);
+// app.set("trust proxy", 1);
 
 app.use(
   cors({
-    origin: [URL],
+    // origin: [URL, "j0973jd.xyz"],
+    origin: [".j0973jd.xyz", "http://localhost:5173"],
     credentials: true,
   })
 );
@@ -34,7 +35,7 @@ app.use(
     cookie: {
       secure: process.env.NODE_ENV === "production",
       domain:
-        process.env.NODE_ENV === "production" ? ".onrender.com" : undefined,
+        process.env.NODE_ENV === "production" ? ".j0973jd.xyz" : undefined,
       sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       httpOnly: true,
       // 30 minute idle timeout
