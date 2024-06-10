@@ -35,10 +35,7 @@ app.use(
       clientPromise: client,
     }),
     cookie: {
-      secure: process.env.NODE_ENV === "production",
-      domain:
-        process.env.NODE_ENV === "production" ? ".j0973jd.xyz" : undefined,
-      // sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      // secure: process.env.NODE_ENV === "production",
       sameSite: "lax",
       httpOnly: true,
       // 30 minute idle timeout
