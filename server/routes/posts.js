@@ -25,7 +25,8 @@ const s3 = new S3Client({
 router.get("/api/posts/:userId", auth, async (req, res) => {
   const { posts } = await User.findById(req.params.userId)
     .lean()
-    .populate("posts", "imageName -_id -creator");
+    // .populate("posts", "imageName -_id -creator");
+    .populate("posts", "imageName comments caption likes -_id -creator");
 
   for (const post of posts) {
     const getObjectParams = {
@@ -38,7 +39,7 @@ router.get("/api/posts/:userId", auth, async (req, res) => {
     post.imageUrl = url;
   }
 
-  // console.log(req.cookies.sid);
+  console.log(posts);
 
   res.json({ posts });
 });

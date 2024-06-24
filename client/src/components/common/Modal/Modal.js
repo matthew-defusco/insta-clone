@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import styles from "./Modal.module.css";
 
 const Modal = ({ isOpen, onClose, children, ...props }) => {
@@ -11,7 +11,6 @@ const Modal = ({ isOpen, onClose, children, ...props }) => {
   // }
 
   const handleClickOutside = e => {
-    console.log(e.target);
     if (e.target == modalRef.current) {
       modalRef.current.close();
       // Let the parent component update their state for "open" and "closed" based on clicking outside

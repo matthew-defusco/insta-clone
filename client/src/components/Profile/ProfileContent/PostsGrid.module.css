@@ -5,3 +5,8 @@
   grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
   gap: 5px;
 }
+
+.modal {
+  width: 60%;
+  border-radius: 5px;
+}

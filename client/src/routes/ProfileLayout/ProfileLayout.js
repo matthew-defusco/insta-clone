@@ -21,6 +21,7 @@ const ProfileLayout = ({ profileUser }) => {
   const URL = config.url;
   let profileActions;
   let modalActions;
+  console.log(posts);
 
   // Update the state so that it's not permanently set to "false"
   // This lets you re-open the modal again once it's been closed in any way
