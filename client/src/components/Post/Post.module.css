@@ -1,3 +1,31 @@
 .post-container {
   border-radius: 5px;
 }
+
+.engage-section {
+  /* height: 2.2rem; */
+  padding: 0.5rem;
+}
+
+.engage-section svg {
+  font-size: 1.75rem;
+  cursor: pointer;
+  transition: 200ms;
+}
+
+svg.clicked {
+  animation-duration: 200ms;
+  animation-direction: alternate;
+  animation-name: beat;
+  animation-iteration-count: 2;
+}
+
+.engage-section svg:last-child {
+  margin-left: 1rem;
+}
+
+@keyframes beat {
+  to {
+    transform: scale(1.1);
+  }
+}

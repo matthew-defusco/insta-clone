@@ -21,7 +21,6 @@ const ProfileLayout = ({ profileUser }) => {
   const URL = config.url;
   let profileActions;
   let modalActions;
-  console.log(posts);
 
   // Update the state so that it's not permanently set to "false"
   // This lets you re-open the modal again once it's been closed in any way
@@ -90,9 +89,17 @@ const ProfileLayout = ({ profileUser }) => {
       <Divider />
       <div className={styles["tab-container"]}>
         {tabs.map((tab, i) => {
+          let tabData;
+          tab == "posts"
+            ? (tabData = posts.posts.length)
+            : tab == "followers"
+            ? (tabData = 0)
+            : (tabData = 0);
+
           return (
             <ProfileTab
               tabLabel={tab}
+              tabData={tabData}
               isActive={activeTab == i}
               key={i}
               onClick={() => changeTab(i)}

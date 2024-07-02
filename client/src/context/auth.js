@@ -47,9 +47,10 @@ export const AuthProvider = ({ children }) => {
     const data = await res.json();
     console.log("Coming from checkLogin context", data);
     if (data.user) {
-      setUser(data.user);
+      // setUser(data.user);
+      return user;
     } else {
-      logout();
+      // logout();
     }
   };
 

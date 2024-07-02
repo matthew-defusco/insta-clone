@@ -26,7 +26,7 @@ router.get("/api/posts/:userId", auth, async (req, res) => {
   const { posts } = await User.findById(req.params.userId)
     .lean()
     // .populate("posts", "imageName -_id -creator");
-    .populate("posts", "imageName comments caption likes -_id -creator");
+    .populate("posts");
 
   for (const post of posts) {
     const getObjectParams = {
@@ -38,8 +38,6 @@ router.get("/api/posts/:userId", auth, async (req, res) => {
     const url = await getSignedUrl(s3, command, { expiresIn: 3600 });
     post.imageUrl = url;
   }
-
-  console.log(posts);
 
   res.json({ posts });
 });
@@ -93,5 +91,8 @@ router.post("/api/posts", auth, upload.single("image"), async (req, res) => {
     console.log(error);
   }
 });
+
+// Like a post
+router.post("/api/posts/:postId", auth, async (req, res) => {});
 
 export default router;
