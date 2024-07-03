@@ -13,6 +13,7 @@ const userSchema = new Schema(
       default: "profile-images/default_avatar.jpeg",
     },
     following: [{ type: Schema.Types.ObjectId, ref: "User" }],
+    likedPosts: [{ type: Schema.Types.ObjectId, ref: "Post" }],
   },
   {
     timestamps: true,

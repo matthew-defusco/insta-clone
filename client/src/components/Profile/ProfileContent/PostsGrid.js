@@ -10,7 +10,6 @@ const PostsGrid = ({ posts }) => {
   const [post, setPost] = useState(null);
 
   const showPostHandler = post => {
-    console.log(post);
     setPost(post);
     setShowPost(true);
   };

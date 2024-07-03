@@ -93,6 +93,29 @@ router.post("/api/posts", auth, upload.single("image"), async (req, res) => {
 });
 
 // Like a post
-router.post("/api/posts/:postId", auth, async (req, res) => {});
+router.put("/api/posts/:postId", auth, async (req, res) => {
+  const userId = req.session.user.userId;
+  const postId = req.params.postId;
+
+  const post = await Post.findById(postId);
+  const user = await User.findById(userId);
+
+  if (post.likedBy.includes(userId)) {
+    post.likes -= 1;
+    const postIndex = post.likedBy.indexOf(user._id);
+    post.likedBy.splice(postIndex, 1);
+    const userIndex = user.likedPosts.indexOf(post._id);
+    user.likedPosts.splice(userIndex, 1);
+  } else {
+    post.likes += 1;
+    post.likedBy.push(userId);
+    user.likedPosts.push(postId);
+  }
+
+  await post.save();
+  await user.save();
+
+  res.json({ message: "OK", user, post });
+});
 
 export default router;

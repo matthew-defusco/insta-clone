@@ -1,15 +1,29 @@
+import { useEffect, useState } from "react";
+import { useFetcher } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faComment, faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faHeart as solidHeart } from "@fortawesome/free-solid-svg-icons";
+
+import { config } from "../../config";
+import { useAuth } from "../../context/auth";
 import styles from "./Post.module.css";
-import { useState } from "react";
 
 const Post = ({ post }) => {
+  const fetcher = useFetcher();
+  const { user } = useAuth();
+  const { url } = config;
   const [heartClass, setHeartClass] = useState(null);
-  const [heartColor, setHeartColor] = useState("black");
-  console.log(post._id);
+  const [heartColor, setHeartColor] = useState(
+    post.likedBy.includes(user.userId) ? "red" : "black"
+  );
 
-  const heartClickHandler = () => {
+  // useEffect(() => {
+  //   if (post.likedBy.includes(user.userId)) {
+  //     setHeartColor("red")
+  //   }
+  // }, [])
+
+  const heartClickHandler = async () => {
     setHeartClass("clicked");
     setHeartColor(prevColor => {
       if (prevColor == "black") {
@@ -18,20 +32,52 @@ const Post = ({ post }) => {
         return "black";
       }
     });
+
+    // try {
+    //   const res = await fetch(url + "/api/posts/" + post._id, {
+    //     method: "PUT",
+    //     credentials: "include",
+    //   });
+
+    //   const data = await res.json();
+    // } catch (error) {
+    //   console.log(error);
+    // }
   };
 
   return (
     <div className={styles["post-container"]}>
       <img src={post.imageUrl} alt={post.caption} style={{ width: "100%" }} />
       <section className={styles["engage-section"]}>
-        <FontAwesomeIcon
-          icon={heartColor == "black" ? faHeart : solidHeart}
-          onClick={heartClickHandler}
-          className={styles[heartClass]}
-          onAnimationEnd={() => setHeartClass(null)}
-          style={{ color: heartColor }}
-        />
-        <FontAwesomeIcon icon={faComment} />
+        <fetcher.Form method="PUT" action={`/api/posts/${post._id}`}>
+          <label>
+            <input
+              hidden
+              readOnly
+              value="like"
+              name="engage-type"
+              type="submit"
+            />
+            <FontAwesomeIcon
+              icon={heartColor == "black" ? faHeart : solidHeart}
+              onClick={heartClickHandler}
+              className={styles[heartClass]}
+              onAnimationEnd={() => setHeartClass(null)}
+              style={{ color: heartColor }}
+            />
+          </label>
+        </fetcher.Form>
+        <fetcher.Form method="PUT" action={`/api/posts/${post._id}`}>
+          <label>
+            <input
+              hidden
+              type="submit"
+              defaultValue="comment"
+              name="engage-type"
+            />
+            <FontAwesomeIcon icon={faComment} />
+          </label>
+        </fetcher.Form>
       </section>
       <p>{post.caption}</p>
     </div>

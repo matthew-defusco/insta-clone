@@ -1,10 +1,17 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { useAuth } from "./context/auth";
 import { RequireAuth } from "./components/RequireAuth";
-import { loginAction } from "./actions/loginAction";
-import { logoutAction } from "./actions/logoutAction";
-import { signupAction } from "./actions/signupAction";
-import { addPost } from "./actions/addPostAction";
+import {
+  loginAction,
+  logoutAction,
+  signupAction,
+  addPost,
+  postEngageAction,
+} from "./actions/index.js";
+// import { loginAction } from "./actions/loginAction";
+// import { logoutAction } from "./actions/logoutAction";
+// import { signupAction } from "./actions/signupAction";
+// import { addPost } from "./actions/addPostAction";
 import BaseError from "./components/errors/BaseError";
 import Layout from "./routes/Layout/Layout";
 import Login from "./routes/Login/Login";
@@ -47,6 +54,10 @@ function App() {
               path: "create",
               action: addPost,
               element: <AddPost />,
+            },
+            {
+              path: "api/posts/:postId",
+              action: postEngageAction,
             },
             {
               path: "logout",

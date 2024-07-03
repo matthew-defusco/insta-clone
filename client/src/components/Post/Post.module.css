@@ -5,6 +5,13 @@
 .engage-section {
   /* height: 2.2rem; */
   padding: 0.5rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.engage-section button {
+  all: unset;
 }
 
 .engage-section svg {
@@ -20,7 +27,7 @@ svg.clicked {
   animation-iteration-count: 2;
 }
 
-.engage-section svg:last-child {
+.engage-section form:last-child {
   margin-left: 1rem;
 }
 

@@ -9,6 +9,7 @@ const postSchema = new Schema(
     ],
     caption: { required: true, type: String },
     likes: { required: true, type: Number, default: 0 },
+    likedBy: [{ type: Schema.Types.ObjectId, ref: "User" }],
   },
   {
     timestamps: true,
